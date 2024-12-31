@@ -1,0 +1,27 @@
+{% extends 'base.html' %} {% block content %}
+<h1>Job Order List</h1>
+<ul>
+  {% for job_order in job_orders %}
+  <li>
+    Job Order Number: {{ job_order.job_order_number }}
+    <br />
+    Customer Name: {{ job_order.customer_name }}
+    <br />
+    Status: {{ job_order.get_status_display }}
+    <br />
+    <a href="{% url 'job_orders:job_order_detail' job_order.pk %}"
+      >View Details</a
+    >
+    {% if job_order.status == 'PENDING_MD' and user.department == 'MD' %}
+    <a href="{% url 'job_orders:md_approve_job_order' job_order.pk %}"
+      >Approve/Reject</a
+    >
+    {% elif job_order.status == 'PENDING_FM' and user.department == 'FM' %}
+    <a href="{% url 'job_orders:fm_approve_job_order' job_order.pk %}"
+      >Approve/Reject</a
+    >
+    {% endif %}
+  </li>
+  {% endfor %}
+</ul>
+{% endblock %}

@@ -1,0 +1,9 @@
+{% extends 'base.html' %} {% block content %}
+<h1>MD Approval</h1>
+<p>Do you want to approve this job order?</p>
+<form method="post">
+  {% csrf_token %}
+  <button type="submit" name="approve" value="approve">Approve</button>
+  <button type="submit" name="reject" value="reject">Reject</button>
+</form>
+{% endblock %}

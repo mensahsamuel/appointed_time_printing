@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Appointed Time Printing</title>
+    {% load static %}
+    <link rel="stylesheet" href="{% static 'css/style.css' %}" />
+  </head>
+  <body>
+    <header>
+      <h1>Appointed Time Printing</h1>
+      <nav>
+        {% if user.is_authenticated %}
+        <a href="{% url 'accounts:logout' %}">Logout</a>
+        {% if user.department == 'MD' %}
+        <a href="{% url 'job_orders:md_dashboard' %}">MD Dashboard</a>
+        {% elif user.department == 'FM' %}
+        <a href="{% url 'job_orders:fm_dashboard' %}">FM Dashboard</a>
+        {% elif user.department == 'Sales' %}
+        <a href="{% url 'job_orders:sales_dashboard' %}">Sales Dashboard</a>
+        {% endif %} {% else %}
+        <a href="{% url 'accounts:login' %}">Login</a>
+        {% endif %}
+      </nav>
+    </header>
+
+    <main>{% block content %}{% endblock %}</main>
+
+    <footer>&copy; 2023 Appointed Time Printing. All rights reserved.</footer>
+  </body>
+</html>

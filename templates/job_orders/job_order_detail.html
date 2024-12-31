@@ -1,0 +1,18 @@
+{% extends 'base.html' %} {% block content %}
+<h1>Job Order Details</h1>
+<ul>
+  <li>Job Order Number: {{ job_order.job_order_number }}</li>
+  <li>Customer Name: {{ job_order.customer_name }}</li>
+  <li>Telephone: {{ job_order.telephone }}</li>
+  <li>Department: {{ job_order.get_department_display }}</li>
+  <li>Description: {{ job_order.description }}</li>
+  <li>Customer Material: {{ job_order.customer_material }}</li>
+  <li>Company Material: {{ job_order.company_material }}</li>
+  <li>Quantity: {{ job_order.quantity }}</li>
+  <li>Date of Collection: {{ job_order.date_of_collection }}</li>
+  <li>Total Amount: {{ job_order.total_amount }}</li>
+  <li>Deposit: {{ job_order.deposit }}</li>
+  <li>Receipt Number: {{ job_order.receipt_number }}</li>
+  <li>Status: {{ job_order.get_status_display }}</li>
+</ul>
+{% endblock %}
